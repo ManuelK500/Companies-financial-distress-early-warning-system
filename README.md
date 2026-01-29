@@ -184,9 +184,10 @@ Emmanuel Ahiekpor
 Senior Data Scientist & Business Analyst
 
 
-Project Architecture
 
-Architecture Diagram
+## Project Architecture
+
+### Architecture Diagram
 ```mermaid
 flowchart TD
 
@@ -219,9 +220,47 @@ flowchart TD
     D --> L[Models & Artifacts<br/>models/]
     E --> M[Visuals<br/>visuals/]
     F --> M
+```
 
- 
-Layered Architecture Diagram
+### Layered Architecture Diagram
+## Project Architecture
+
+### Architecture Diagram
+```mermaid
+flowchart TD
+
+    %% Data Layer
+    A[Raw Financial Data<br/>CSV, Excel, External Sources] --> B[Data Ingestion<br/>src/data_ingestion.py]
+
+    %% Feature Engineering
+    B --> C[Feature Engineering<br/>src/feature_engineering.py]
+
+    %% Modeling
+    C --> D[Model Training<br/>src/model_training.py]
+    D --> E[Model Evaluation<br/>src/model_evaluation.py]
+
+    %% Explainability
+    D --> F[SHAP Explainability<br/>src/shap_explainability.py]
+
+    %% Outputs
+    E --> G[Model Outputs<br/>Predictions, Metrics]
+    F --> H[Explainability Visuals<br/>SHAP Summary, Force Plots]
+
+    %% Dashboards
+    G --> I[Power BI Dashboard<br/>dashboards/powerbi]
+    H --> I
+    G --> J[Streamlit App<br/>dashboards/streamlit/app.py]
+    H --> J
+
+    %% Storage
+    B --> K[Processed Data<br/>data/processed]
+    C --> K
+    D --> L[Models & Artifacts<br/>models/]
+    E --> M[Visuals<br/>visuals/]
+    F --> M
+```
+
+### Layered Architecture Diagram
 ```mermaid
 flowchart LR
 
@@ -281,3 +320,25 @@ flowchart LR
     F --> H --> J
     G --> K
     H --> K
+```
+
+
+
+## 📊 Model Performance
+
+### Confusion Matrix
+![Confusion Matrix](visuals/confusion_matrix.png)
+
+### ROC Curve
+![ROC Curve](visuals/roc_curve.png)
+
+### SHAP Summary Plot
+![SHAP Summary](visuals/shap_summary.png)
+
+
+
+## 📊 Model Performance (Optional)
+Model evaluation visuals such as the confusion matrix, ROC curve, and SHAP summary plot were generated during experimentation. These can be reproduced by running the notebooks in the `notebooks/` directory.
+
+## 📈 Dashboards (Optional)
+This project includes both a Power BI dashboard and a Streamlit prototype. Screenshots are not included in this repository but can be reproduced by running the dashboard files in the `dashboards/` directory.
